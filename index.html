@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body class="m-2">
+    <div class="flex gap-2">
+    <input class="border border-solid border-black rounded-md" type="number" placeholder="Quantity?" id="input" />
+    <select id="options1" class="border border-solid border-black rounded-md bg-white">
+        <option class="bg-black text-white" value="kilometer">Kilometer</option>
+        <option class="bg-black text-white" value="meter">Meter</option>
+        <option class="bg-black text-white" value="centimeter">Centimeter</option>
+        <option class="bg-black text-white" value="millimeter">Millimeter</option>
+    </select>
+    <p class="py-2">to</p>
+    <select id="options2" class="border border-solid border-black rounded-md bg-white">
+        <option class="bg-black text-white" value="kilometer">Kilometer</option>
+        <option class="bg-black text-white" value="meter">Meter</option>
+        <option class="bg-black text-white" value="centimeter">Centimeter</option>
+        <option class="bg-black text-white" value="millimeter">Millimeter</option>
+    </select>
+    <button class="bg-indigo-500 px-6 py-2 border border-solid border-indigo-700 rounded-md"
+        onclick="unitConverter()">Convert</button>
+        </div>
+    <div class="text-indigo-700 text-lg p-2" id="answer"></div>
+    <script>
+        function unitConverter() {
+            let input = document.getElementById("input").value ;
+            let options1 = document.getElementById("options1").value ;
+            let options2 = document.getElementById("options2").value ;
+
+            let conversionUnit = 1;
+            if (options1 === "kilometer" && options2 === "kilometer") {
+                conversionUnit = 1;
+            }
+            else if (options1 === "kilometer" && options2 === "meter") {
+                conversionUnit = 1000;
+            }
+            else if (options1 === "kilometer" && options2 === "centimeter") {
+                conversionUnit = 100000;
+            }
+            else if (options1 === "kilometer" && options2 === "millimeter") {
+                conversionUnit = 1000000;
+            }
+            else if (options1 === "meter" && options2 === "kilometer") {
+                conversionUnit = 0.001;
+            }
+            else if (options1 === "meter" && options2 === "millimeter") {
+                conversionUnit = 1;
+            }
+            else if (options1 === "meter" && options2 === "centimeter") {
+                conversionUnit = 100;
+            }
+            else if (options1 === "meter" && options2 === "millimeter") {
+                conversionUnit = 1000;
+            }
+            else if (options1 === "centimeter" && options2 === "kilometer") {
+                conversionUnit = 0.00001;
+            }
+            else if (options1 === "centimeter" && options2 === "meter") {
+                conversionUnit = 0.01;
+            }
+            else if (options1 === "centimeter" && options2 === "centimeter") {
+                conversionUnit = 1;
+            }
+            else if (options1 === "centimeter" && options2 === "millimeter") {
+                conversionUnit = 10;
+            }
+            else if (options1 === "millimeter" && options2 === "kilometer") {
+                conversionUnit = 0.000001;
+            }
+            else if (options1 === "millimeter" && options2 === "meter") {
+                conversionUnit = 0.001;
+            }
+            else if (options1 === "millimeter" && options2 === "centimeter") {
+                conversionUnit = 0.01;
+            }
+            else if (options1 === "millimeter" && options2 === "millimeter") {
+                conversionUnit = 1;
+            }
+            let answer = input * conversionUnit;
+            document.getElementById("answer").innerHTML = `${input} ${options1} is ${answer} ${options2}`;
+
+        }
+    </script>
+
+</body>
+
+</html>
